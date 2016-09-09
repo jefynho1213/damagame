@@ -70,6 +70,10 @@ void printa_table(char **table){
 	}
 }
 
+//void jogada(char **table, int ){
+
+//}
+
 //recebe o endereco da tabela, linha e coluna que deseja jogar <linha_p>, linha e coluna atual <linha_a> e jogador que esta fazendo a jogada
 //retorna -1 para jogadas invalidas
 //retorna 1 para realizar a jogada
@@ -93,4 +97,6 @@ int verificacasa(char **table, int linha_p, int coluna_p, char jogador, int linh
 		}
 	
 }
+
+
 
