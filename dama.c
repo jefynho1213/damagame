@@ -32,13 +32,14 @@ int main(){
 char **incializa(){
 	char **table;
 	int i,j;
+
 	table = (char **)calloc(8,sizeof(char *));
 
 	for(i=0;i<8;i++)
 		table[i]= (char *)calloc(8,sizeof(char));
 	
 	for(i=0;i<8;i++)
-		for(j=0;i<8;j++)
+		for(j=0;j<8;j++)
 			table[i][j] = ' ';
 
 	return table;
@@ -52,7 +53,7 @@ void organiza(char **table){
 		for(j=0;j<8;j++)
 			table[i][j] = 'X';
 		
-	for(i=7;i>5;i--)
+	for(i=6;i<8;i++)
 		for(j=0;j<8;j++)
 			table[i][j] = 'O';
 	
@@ -61,9 +62,9 @@ void organiza(char **table){
 
 void printa_table(char **table){
 	int i,j;
-	for(i=0;j<8;i++){
+	for(i=0;i<8;i++){
 		for(j=0;j<8;j++){
-			printf("%c", table[i][j]);
+			printf("[%c]", table[i][j]);
 		}
 		printf("\n");
 	}
@@ -92,3 +93,4 @@ int verificacasa(char **table, int linha_p, int coluna_p, char jogador, int linh
 		}
 	
 }
+
