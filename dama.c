@@ -50,29 +50,29 @@ void organiza(char **table){
 	int i,j;
 
 	for(i=0;i<3;i++){
-        if(i%2 == 0){
-            j=1;
-         }else{
-            j=0;
-         }
-        while(j<8){
-            table[i][j] = 'X';
-            j+=2;
-        }
+	        if(i%2 == 0){
+	            j=1;
+	         }else{
+	            j=0;
+	         }
+	        while(j<8){
+	            table[i][j] = 'X';
+	            j+=2;
+	        }
 
-    }
+    	}
 
 	for(i=5;i<8;i++){
-        if(i%2 == 0){
-            j=1;
-         }else{
-            j=0;
-         }
-        while(j<8){
-            table[i][j] = 'O';
-            j+=2;
-        }
-    }
+	        if(i%2 == 0){
+	            j=1;
+	         }else{
+	            j=0;
+	         }
+	        while(j<8){
+	            table[i][j] = 'O';
+	            j+=2;
+	        }
+	}
 }
 
 
