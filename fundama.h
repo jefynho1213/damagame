@@ -80,11 +80,12 @@ int captura(char **table, int linha_p, int coluna_p, int linha_a, int coluna_a, 
 	printf("cap jogador\n local ocupado por '%c' \n linha %d coluna %d\n", table[linha_a-1][coluna_a-1], linha_a-1, coluna_a-1);
 	if(linha_a != linha_p+2){
 		return -1;
-	} else if(table[linha_a-1][coluna_a-1]== 'X') {
+	} else if(table[linha_a-1][coluna_a-1]== 'X' || table[linha_a-1][coluna_a+1]== 'X') {
 		printf("detectou x\n");
 		if(table[linha_p][coluna_p]== ' '){
 			table[linha_p][coluna_p] = 'O';
 			table[linha_a][coluna_a] = ' ';
+			table[linha_a-1][coluna_a-1]=' ';
 			if(coluna_p-2 == coluna_a){
 				table[linha_a+1][coluna_a-1]=' ';
 				return 1;
