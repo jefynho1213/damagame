@@ -3,20 +3,7 @@
 #include <string.h>
 #include "fundama.h"
 
-//caso ele nao possua nenhuma peca para capturar, verifica se o movimento solicitado e valido
-int verificacasa(char **, int , int, char, int, int);
-//  loog do jogo
-//void game();
-//  verifica se o jogador pode capturar alguma peca
-//void capturar();
-//  verifica se a peca movimentada possui previlegios de dama
-//int dama();
-//  cria a matriz
-char **incializa();
-//  organiza pecas
-void organiza(char **);
 
-void printa_table(char **);
 
 
 int main(){
@@ -24,8 +11,27 @@ int main(){
 	table = incializa();
 	organiza(table);
 	printa_table(table);
+	
 
+	int l_a, c_a, l_p, c_p;
+	for(;;){
+		scanf("%d", &l_a);
+		scanf("%d", &c_a);
+		scanf("%d", &l_p);
+		scanf("%d", &c_p);
+		char jogador = 'O';
+		int status;
+		
+			status =  verificacasa(table, l_p, c_p, l_a, c_a, jogador);
 
+		 	printa_table(table);
+		
+		 if(status < 1 ){
+		 	printf(" voce nao pode fazer essa jogada\n");
+		 } else {
+		 	printf("jogada ok\n");
+		 }
+	}
 	return 0;
 }
 
