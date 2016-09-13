@@ -77,11 +77,11 @@ void printa_table(char **table){
 }
 
 int captura(char **table, int linha_p, int coluna_p, int linha_a, int coluna_a, char jogador){
-	printf("cap jogador\n");
-	if(linha_a != linha_p-2){
+	printf("cap jogador\n local ocupado por '%c' \n linha %d coluna %d\n", table[linha_a-1][coluna_a-1], linha_a-1, coluna_a-1);
+	if(linha_a != linha_p+2){
 		return -1;
-	} else if(table[linha_a-1][coluna_a+1]== 'X' || table[linha_a-1][coluna_a-1] == 'X') {
-		
+	} else if(table[linha_a-1][coluna_a-1]== 'X') {
+		printf("detectou x\n");
 		if(table[linha_p][coluna_p]== ' '){
 			table[linha_p][coluna_p] = 'O';
 			table[linha_a][coluna_a] = ' ';
@@ -104,7 +104,7 @@ int captura(char **table, int linha_p, int coluna_p, int linha_a, int coluna_a, 
 //recebe o endereco da tabela, linha e coluna que deseja jogar <linha_p>, linha e coluna atual <linha_a> e jogador que esta fazendo a jogada
 //retorna -1 para jogadas invalidas
 //retorna 1 para realizar a jogada
-//jogar 1 é o jogador da area inferior
+//jogar 1 Ã© o jogador da area inferior
 
 int verificacasa(char **table, int linha_p, int coluna_p, int linha_a, int coluna_a, char jogador){
 
