@@ -20,9 +20,14 @@ int main(){
 	for(;;){
 	   
 	    if(i%2==0){
+	    
 	    	jogador = 1;
+	    
 	    	printf("E a vez do jogar: %c\n", jogador );
+	    
+	    	
 	    }	 else {
+	    	
 	    		jogador = 2;
 	    	
 	    		printf("E a vez do jogar: %c\n", jogador );
