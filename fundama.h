@@ -20,7 +20,7 @@ char **incializa(){
 	char **table;
 	
 	int i,j;
-	char k=176;
+	char k=' ';
 
 	table = (char **)calloc(8,sizeof(char *));
 
@@ -64,7 +64,7 @@ char **incializa(){
 void organiza(char **table){
 
 	int i,j;
-	char X=1, O=2;
+	char X='X', O='O';
 
 	for(i=0;i<3;i++){
 	       
@@ -148,90 +148,158 @@ void printa_table(char **table){
 
 int captura(char **table, int linha_p, int coluna_p, int linha_a, int coluna_a, char jogador){
 	
-	char X=1, O=2;
+	char X='X', O='O';
 	
 	printf("cap jogador\n local ocupado por '%c' \n linha %d coluna %d\n", table[linha_a-1][coluna_a-1], linha_a-1, coluna_a-1);
+	if(jogador == O){
 
-	if(linha_a != linha_p+2){
+		if(linha_a != linha_p+2){
 
-		return -1;
+			return -1;
 
-	} 	else if(table[linha_a-1][coluna_a-1]== X ) { // verifica x a esquerda da peça para possibilitar movimento > que uma casa
-				
-				printf("detectou x na esquerda \n");
-	
-				if(table[linha_p][coluna_p]== ' '){
-			
-					table[linha_p][coluna_p] = O;
-			
-					table[linha_a][coluna_a] = ' ';
-			
-					table[linha_a-1][coluna_a-1]=' ';
-			
-					if(coluna_p-2 == coluna_a){
-			
-						table[linha_a+1][coluna_a-1]=' ';
-			
-						return 1;
-
-					} 
-				}			
-	} 	else if(table[linha_a-1][coluna_a-1]== X ) { // verifica x a direita da peça para possibilitar movimento > que uma casa
-        }	else if (table[linha_a-1][coluna_a+1]== X){ 
+		} 	else if(table[linha_a-1][coluna_a-1]== X ) { // verifica O a esquerda da peça para possibilitar movimento > que uma casa
 					
-				printf("detectou x na direita \n");
+					printf("detectou x na esquerda \n");
+		
+					if(table[linha_p][coluna_p]== ' '){
+				
+						table[linha_p][coluna_p] = jogador;
+				
+						table[linha_a][coluna_a] = ' ';
+				
+						table[linha_a-1][coluna_a-1]=' ';
+				
+						if(coluna_p-2 == coluna_a){
+				
+							table[linha_a+1][coluna_a-1]=' ';
+				
+							return 1;
+						} 
+						return 1;
+					} else {
+						return -1;
+					}			
+		} 	else if(table[linha_a-1][coluna_a-1]== X ) { // verifica O a direita da peça para possibilitar movimento > que uma casa
+	        }	else if (table[linha_a-1][coluna_a+1]== X){ 
+						
+					printf("detectou x na direita \n");
 
 
-						if (table[linha_p][coluna_p]== ' '){
-							
-							table[linha_p][coluna_p] = O;
-							
-							table[linha_a][coluna_a] = ' ';
-							
-							table[linha_a-1][coluna_a+1]=' ';
-							
-							if(coluna_p-2 == coluna_a){
-							
-								table[linha_a+1][coluna_a-1]=' ';
-							
+							if (table[linha_p][coluna_p]== ' '){
+								
+								table[linha_p][coluna_p] = O;
+								
+								table[linha_a][coluna_a] = ' ';
+								
+								table[linha_a-1][coluna_a+1]=' ';
+								
+								if(coluna_p-2 == coluna_a){
+								
+									table[linha_a+1][coluna_a-1]=' ';
+								
+									return 1;
+								}
 								return 1;
-							}
-						}		
-			} 
+							} else {
+								return -1;
+							}		
+				} else {
+					return -1;
+				}
+		} else {
+			//jogador X
+
+			if(linha_a != linha_p-2){
+
+			return -1;
+
+		} 	else if(table[linha_a+1][coluna_a+1]== O ) { // verifica x a esquerda da peça para possibilitar movimento > que uma casa
+					
+					printf("detectou x na esquerda \n");
+		
+					if(table[linha_p][coluna_p]== ' '){
+				
+						table[linha_p][coluna_p] = jogador;
+				
+						table[linha_a][coluna_a] = ' ';
+				
+						table[linha_a-1][coluna_a-1]=' ';
+				
+						if(coluna_p-2 == coluna_a){
+				
+							table[linha_a+1][coluna_a-1]=' ';
+				
+							return 1;
+
+						}
+						return 1; 
+					} else {
+						return -1;
+					}			
+		} 	else if(table[linha_a+1][coluna_a+1]== O ) { // verifica x a direita da peça para possibilitar movimento > que uma casa
+	        }	else if (table[linha_a+1][coluna_a-1]== O){ 
+						
+					printf("detectou x na direita \n");
+
+
+							if (table[linha_p][coluna_p]== ' '){
+								
+								table[linha_p][coluna_p] = X;
+								
+								table[linha_a][coluna_a] = ' ';
+								
+								table[linha_a+1][coluna_a-1]=' ';
+								
+								if(coluna_p-2 == coluna_a){
+								
+									table[linha_a+1][coluna_a-1]=' ';
+								
+									return 1;
+								}
+								return 1;
+							} else {
+								return -1;
+							}		
+				} else {
+					return -1;
+				}
+
+
+			return -1;
+		}
+		return -1;
 }
 
 //recebe o endereco da tabela, linha e coluna que deseja jogar <linha_p>, linha e coluna atual <linha_a> e jogador que esta fazendo a jogada
+//retorna 1 para jogada bem sussedida
 //retorna -1 para jogadas invalidas
-//retorna 1 para realizar a jogada
-//jogar 1 é o jogador da area inferior
+// -2 para local ocupado por outra peca
+// -3 para a jogada nao foi feita para frente ou ele tentou andar mais de uma linha
+//
 
 int verificacasa(char **table, int linha_p, int coluna_p, int linha_a, int coluna_a, char jogador){
-
-	char X=1, O = jogador;
-			
-			
+	char X='X', O='O';
+	int status;
 
 			// condiçoes para casa o jogador escolha a pedra referente a O
 			
-
-			if(table[linha_a][coluna_a] == O){
+			if(jogador == O){
 			
-				if(jogador == O){
+				if(table[linha_a][coluna_a] == jogador){
+						
 				
 					if(table[linha_p][coluna_p] != ' '){
 				
 						printf("local ocupado\n");
 				
 						return -2;
-						//verifica se o jogador esta realizando uma jogada na diagonal
+						//verifica se a jogada foi feita para frente e apenas uma casa || chama a funcao captura para verificar se o jogador quer capturar alguma peca
 					} else if(linha_a != linha_p+1) {
 				
-						captura(table, linha_p, coluna_p, linha_a, coluna_a, jogador);
-						
-						printf("linha compara\n");
-				
-						return -1;
-						//verifica se o jogador esta realizando uma jogada na diagonal
+						status = captura(table, linha_p, coluna_p, linha_a, coluna_a, jogador);
+						printf("voce nao pode andar mais que duas casas ao nao ser capture alguma peca\n");
+						return 1;
+						//verifica se o jogador esta realizando uma jogada na diagonal e apenas uma casa
 					} else if(coluna_a == coluna_p-1 || coluna_a == coluna_p+1){
 				
 						table[linha_a][coluna_a] = ' ';
@@ -239,23 +307,49 @@ int verificacasa(char **table, int linha_p, int coluna_p, int linha_a, int colun
 						table[linha_p][coluna_p] = O;
 				
 						printf("ok\n");
-				
 						return 1;
 						//verifica se o jogador este relizando
-					} else {
-					
-						printf("coluna compara\n");
-					
-						return -3;			
-					}
+					} 
 				} else {
+					printf("Essa peca nao te pertence\n");
+					return -5;
+				} 
+
+			} else {
+				//jogador X
+				if(table[linha_a][coluna_a] == jogador){
+						
 				
-					printf("jogador\n");
+					if(table[linha_p][coluna_p] != ' '){
 				
-					return 1;
+						printf("local ocupado\n");
+				
+						return -2;
+						//verifica se a jogada foi feita para frente e apenas uma casa || chama a funcao captura para verificar se o jogador quer capturar alguma peca
+					} else if(linha_a != linha_p-1) {
+				
+						status = captura(table, linha_p, coluna_p, linha_a, coluna_a, jogador);
+						printf("voce nao pode andar mais que duas casas ao nao ser capture alguma peca\n");
+						return status;
+						//verifica se o jogador esta realizando uma jogada na diagonal e apenas uma casa
+					} else if(coluna_a == coluna_p-1 || coluna_a == coluna_p+1){
+				
+						table[linha_a][coluna_a] = ' ';
+
+						table[linha_p][coluna_p] = X;
+				
+						printf("ok\n");
+						return 1;
+						//verifica se o jogador este relizando
+					} 
+				} else {
+					printf("Essa peca nao te pertence\n");
+					return -5;
+				
+				
 				}
 			}
-			
+			return -5;
 						
 }
 
