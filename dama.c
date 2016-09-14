@@ -52,7 +52,6 @@ int main(){
 				int status;
 				if(l_a==100){
 					organiza(table);
-					incializa();
 					printa_table(table);
 
 					continue;
