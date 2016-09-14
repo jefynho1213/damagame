@@ -42,13 +42,13 @@ char **incializa(){
 				
 					for(j=0;j<8;j+=2)
 				
-						table[i][j] = k;
+						table[i][j] = ' ';
 
 				for(i=1;i<8;i+=2)
 				
 					for(j=1;j<8;j+=2)
 				
-						table[i][j] = k;
+						table[i][j] = ' ';
 
 
 	return table;
@@ -65,6 +65,28 @@ void organiza(char **table){
 
 	int i,j;
 	char X='X', O='O';
+
+
+		for(i=0;i<8;i++)
+	
+		for(j=0;j<8;j++)
+	
+			table[i][j] = ' ';
+
+				//faz com que os quadradinhos onde nao se pode jogar fiquem preenchidos
+
+				for(i=0;i<8;i+=2)
+				
+					for(j=0;j<8;j+=2)
+				
+						table[i][j] = ' ';
+
+				for(i=1;i<8;i+=2)
+				
+					for(j=1;j<8;j+=2)
+				
+						table[i][j] = ' ';
+	
 
 	for(i=0;i<3;i++){
 	       
@@ -107,15 +129,6 @@ void organiza(char **table){
 	}
 
 	
-	
-
-
-
-
-
-
-
-	table[4][3] = X;
 }
 
 
