@@ -13,22 +13,29 @@ int main(){
 	printa_table(table);
 	
 
-	int i=1, l_a, c_a, l_p, c_p;
+	int i=1,
+		l_a/*linha da peca a ser movida*/, 
+		c_a/*coluna da peca a ser movida*/, 
+		l_p/*linha para aonde a peca sera movida*/, 
+		c_p/*coluna para onde a peca sera movida*/,
+		status/*recebe o status da jogada*/;
 	
-
+	//loop do jogo
 	for(;;){
+
+		//menu de jogo
 		printf("____Comandos MENU:____\n||| 100 para reiniar|||\n||| 200 para encerrar |||\n");
 	   
-	    if(i%2==0){
+	    if(i%2==0){ // verifica de qual jogador tem q jogar
 	    
-	    	jogador = 'X';
+	    	jogador = 'x';
 	    
 	    	printf("E a vez do jogar: %c\n", jogador );
 	    
 	    	
 	    }	 else {
 	    	
-	    		jogador = 'O';
+	    		jogador = 'o';
 	    	
 	    		printf("E a vez do jogar: %c\n", jogador );
 				
@@ -49,7 +56,7 @@ int main(){
 
 						
 				
-				int status;
+				
 				if(l_a==100){
 					organiza(table);
 					printa_table(table);
@@ -59,18 +66,18 @@ int main(){
 				} else if(l_a==200){
 					return 0;
 				} else {
-					if(l_p > 8 || c_p > 8 || l_a > 8 || c_a > 8){
+					if(l_p > 8 || c_p > 8 || l_a > 8 || c_a > 8){ // verifica se o jogador esta escolhendo uma posicao valida
 						printf("As linhas e colunas vao ate 7, Digite um numero menor\n");
 						continue;
 					} else {
 						status =  verificacasa(table, l_p, c_p, l_a, c_a, jogador);
 					}
 				}
-				 	system("clear");
+				 	system("clear");// limpa a tela depois de cada jogada
 
-				 	printa_table(table);
+				 	printa_table(table); // printa a tabela atualizada
 				
-				 if(status < 0 ){
+				 if(status < 0 ){ // verifica o status da jogada
 				
 				 	printf(" voce nao pode fazer essa jogada\n");
 				
