@@ -66,8 +66,8 @@ int main(){
 				} else if(l_a==200){
 					return 0;
 				} else {
-					if(l_p > 8 || c_p > 8 || l_a > 8 || c_a > 8){ // verifica se o jogador esta escolhendo uma posicao valida
-						printf("As linhas e colunas vao ate 7, Digite um numero menor\n");
+					if(l_p > 8 || c_p > 8 || l_a > 9 || c_a > 8){ // verifica se o jogador esta escolhendo uma posicao valida
+						printf("As linhas e colunas vao ate 8, Digite um numero menor\n");
 						continue;
 					} else {
 						status =  verificacasa(table, l_p, c_p, l_a, c_a, jogador);

@@ -8,11 +8,11 @@ char **incializa(){
 	int i,j;
 	char k=' ';
 
-	table = (char **)calloc(8,sizeof(char *));
+	table = (char **)calloc(10,sizeof(char *));
 
-	for(i=0;i<8;i++)
+	for(i=0;i<10;i++)
 	
-		table[i]= (char *)calloc(8,sizeof(char));
+		table[i]= (char *)calloc(10,sizeof(char));
 
 
 	return table;
@@ -31,39 +31,39 @@ void organiza(char **table){
 	char X='x', O='o';
 
 		//prenche cada posicao da tabela com um espaco
-		for(i=0;i<8;i++)
+		for(i=1;i<9;i++)
 	
-		for(j=0;j<8;j++)
+		for(j=1;j<9;j++)
 	
 			table[i][j] = ' ';
 
 				//faz com que os quadradinhos onde nao se pode jogar fiquem preenchidos
 
-		for(i=0;i<8;i+=2)
+		for(i=1;i<9;i+=2)
 		
-			for(j=0;j<8;j+=2)
+			for(j=2;j<9;j+=2)
 		
-				table[i][j] = ' ';
+				table[i][j] = '/';
 
-		for(i=1;i<8;i+=2)
+		for(i=2;i<9;i+=2)
 		
-			for(j=1;j<8;j+=2)
+			for(j=1;j<9;j+=2)
 		
-				table[i][j] = ' ';
+				table[i][j] = '/';
 
 		// coloca as peca X nas posicoes iniciais
-		for(i=0;i<3;i++){
+		for(i=1;i<4;i++){
 		       
 		        if(i%2 == 0){
 		       
-		            j=1;
+		            j=2;
 		       
 		         }else{
 		       
-		            j=0;
+		            j=1;
 		         }
 		       
-		        while(j<8){
+		        while(j<9){
 		       
 		            table[i][j] = X;
 		       
@@ -73,19 +73,19 @@ void organiza(char **table){
 		}
 
 		// coloca as pecas o nas posicoes iniciais
-		for(i=5;i<8;i++){
+		for(i=6;i<9;i++){
 		       
 		        if(i%2 == 0){
 		       
-		            j=1;
+		            j=2;
 		       
 		         }else{
 		       
-		            j=0;
+		            j=1;
 		       
 		         }
 		       
-		        while(j<8){
+		        while(j<9){
 		       
 		            table[i][j] = O;
 		       
@@ -106,11 +106,11 @@ void printa_table(char **table){
 	
 	int i,j;
 	
-	printf(" 0  1  2  3  4  5  6  7 \n");
+	printf(" 1  2  3  4  5  6  7  8 \n");
 	
-	for(i=0;i<8;i++){
+	for(i=1;i<9;i++){
 	
-		for(j=0;j<8;j++){
+		for(j=1;j<9;j++){
 	
 			printf("[%c]", table[i][j]);
 		}
