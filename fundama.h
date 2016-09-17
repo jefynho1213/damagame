@@ -1,6 +1,11 @@
 #ifndef fundama
 
 
+
+
+
+
+
 //aloca memoria para criar a tabela
 char **incializa(){
 	char **table;
@@ -93,7 +98,14 @@ void organiza(char **table){
 		        }
 		}
 
-	
+	for(i=6;i<9;i++) //for - anda para testar a dama somente 
+		for(j=2;j<7;j++)
+			table[i][j]=' ';
+	table[8][4]='D';	//colocando peça nessa cordenada para teste
+		
+	table[6][6]='o';	//colocando peça nessa cordenada para teste
+	table[7][7]=' ';	//colocando peça nessa cordenada para teste
+
 }
 
 
@@ -119,6 +131,27 @@ void printa_table(char **table){
 	}
 }
 
+
+
+
+
+int dama(char **table, int linha_p, int coluna_p, int linha_a, int coluna_a, char jogador){
+	char x='x', o='o';
+	int i,j;
+	
+	if (jogador==x){
+				
+		for(i=1;i<9;i++){
+			if (table[8][i]== x)
+				printf("A peça table[8][%d] eh DAMA\n", i );
+				table[linha_p][coluna_p] = 'D';
+				
+
+			
+		}
+	}	
+ return -9;
+}
 
 
 
@@ -224,8 +257,8 @@ int captura(char **table, int linha_p, int coluna_p, int linha_a, int coluna_a, 
 //
 
 int verificacasa(char **table, int linha_p, int coluna_p, int linha_a, int coluna_a, char jogador){
-	char X='x', O='o';
-	int status;
+	char X='x', O='o', D= 'D';
+	int status, statusdama, i, j;
 
 			// condiçoes para casa o jogador escolha a pedra referente a O
 			if(jogador == O){
@@ -252,6 +285,7 @@ int verificacasa(char **table, int linha_p, int coluna_p, int linha_a, int colun
 				
 						table[linha_a][coluna_a] = ' '; // remove a peca do jogador da posicao atual
 						table[linha_p][coluna_p] = O; // coloca a peca do jogador na posicao solicitada
+						
 						return 1;
 					} 
 				} else {
@@ -259,7 +293,7 @@ int verificacasa(char **table, int linha_p, int coluna_p, int linha_a, int colun
 					return -5;
 				} 
 
-			} else {
+			} else if (jogador== X){
 				//jogador X
 				if(table[linha_a][coluna_a] == jogador){
 						
@@ -285,20 +319,38 @@ int verificacasa(char **table, int linha_p, int coluna_p, int linha_a, int colun
 						table[linha_a][coluna_a] = ' ';
 
 						table[linha_p][coluna_p] = X;
-				
+						
+						statusdama = dama(table,linha_p,coluna_p,linha_a,coluna_a,jogador);
+
 						printf("ok\n");
 						return 1;
 						//verifica se o jogador este relizando
 					} 
-				} else {
-					printf("Essa peca nao te pertence\n");
-					return -5;
-				
-				
-				}
+				}   else {
+							
+								
+					for(i=linha_a;i>0;i--) // veridica as linhas e colunas para a direita ate achar o
+						for(j=coluna_a;j<9;j++)
+							if(table[i][j]== O && table[linha_p][coluna_p] == ' ') // se achar o e linha e coluna proxima estiver fazia faça
+								table[linha_p][coluna_p]= 'D';
+								table[linha_p+1][coluna_p-1]=' '; // apaga peça do adversario
+								table[linha_a][coluna_a]=' '; // apaga antiga cordenada da dama
+								printf("dama comeu\n table[%d][%d]\n", i, j);
+
+					
+
+
+							printf("Essa peca nao te pertence\n");
+							
+							return -5;
+						}
 			}
 			return -5;
-						
+			printf("veio pro final da funcao\n");						
 }
+
+
+						
+
 
 #endif
