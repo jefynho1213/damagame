@@ -11,6 +11,7 @@ int main(){
 	table = incializa();
 	organiza(table);
 	printa_table(table);
+	int k,j;
 	
 
 	int i=1,
@@ -86,10 +87,14 @@ int main(){
 				 	printf("jogada ok\n");
 				 }
 
-			 
+		
 
-		}
-	return 0;
+	
+
+
+	}
+
+return 0;
 }
 
 
