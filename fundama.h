@@ -329,6 +329,7 @@ int damamove(char **table, int linhaatual, int colunaatual, int linhaprox, int c
 				return -1;
 			}
 	} 
+
 }
 
 
@@ -595,7 +596,7 @@ void game(){
 	
 	//loop do jogo
 	do{
-		system ("color 70");
+		system ("color 300");
 		//menu de jogo
 		printf("____Comandos MENU:____\n||| 100 para reiniar|||\n||| 200 para encerrar |||\n");
 	   
@@ -603,14 +604,14 @@ void game(){
 
 	    if(i%2==0){ // verifica de qual jogador tem q jogar
 	    
-	    	jogador = 'o';
+	    	jogador = 'x';
 	    
 	    	printf("E a vez do jogar: %c\n", jogador );
 	    
 	    	
 	    }	 else {
 	    	
-	    		jogador = 'x';
+	    		jogador = 'o';
 	    	
 	    		printf("E a vez do jogar: %c\n", jogador );
 				
